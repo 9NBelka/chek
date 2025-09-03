@@ -43,15 +43,19 @@ const BookingSection = () => {
 
     try {
       const message = `
-        Новий запис на сервіс:
-        Ім'я: ${formData.name}
-        Телефон: ${formData.phone}
-        Автомобіль: ${formData.car || 'Не вказано'}
-        Послуга: ${formData.service || 'Не вказано'}
-      `;
+      Новий запис на сервіс:
+      Ім'я: ${formData.name}
+      Телефон: ${formData.phone}
+      Автомобіль: ${formData.car || 'Не вказано'}
+      Послуга: ${formData.service || 'Не вказано'}
+    `;
 
-      const TELEGRAM_BOT_TOKEN = process.env.REACT_APP_TELEGRAM_BOT_TOKEN;
-      const TELEGRAM_CHAT_ID = process.env.REACT_APP_TELEGRAM_CHAT_ID;
+      const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+      const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+
+      // console.log('Bot Token:', TELEGRAM_BOT_TOKEN); // Debug
+      // console.log('Chat ID:', TELEGRAM_CHAT_ID); // Debug
+      // console.log('Environment Variables:', import.meta.env); // Debug
 
       if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
         throw new Error('Telegram Bot Token или Chat ID не настроены в .env');
@@ -59,11 +63,13 @@ const BookingSection = () => {
 
       const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-      await axios.post(telegramUrl, {
+      const response = await axios.post(telegramUrl, {
         chat_id: TELEGRAM_CHAT_ID,
         text: message,
         parse_mode: 'Markdown',
       });
+
+      // console.log('Telegram API Response:', response.data); // Debug
 
       alert("Дякуємо за запис! Наш менеджер зв'яжеться з вами найближчим часом.");
       setFormData({ name: '', phone: '', car: '', service: '' });

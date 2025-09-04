@@ -113,7 +113,7 @@ const Header = () => {
               <div className='pt-4 border-t border-border'>
                 <div className='flex items-center text-sm text-text-light mb-3'>
                   <Phone className='h-4 w-4 mr-1' />
-                  +38 (044) 123-45-67
+                  <a href='tel:+380936430070'>+38 (093) 643-00-70</a>
                 </div>
                 <Button
                   onClick={() => scrollToSection('booking')}

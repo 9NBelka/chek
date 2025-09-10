@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Menu, X, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import DiscountBlock from './DiscountBlock';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -125,6 +126,7 @@ const Header = () => {
           </div>
         )}
       </div>
+      <DiscountBlock right='right' />
     </header>
   );
 };

@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-bg.jpg';
+import './HeroSection.scss';
 
 const HeroSection = () => {
   return (
@@ -25,7 +26,7 @@ const HeroSection = () => {
           </p>
 
           {/* Special Offer Banner */}
-          <div className='bg-gradient-accent rounded-xl p-6 mb-8 text-white'>
+          <div className='bg-gradient-accent rounded-xl p-6 mb-8 text-white displayNone'>
             <h2 className='text-2xl md:text-3xl font-bold mb-2'>
               🔥 -15% на перший візит для нових клієнтів до кінця місяця!
             </h2>
@@ -54,6 +55,11 @@ const HeroSection = () => {
               Наші послуги
             </Button>
           </div>
+
+          <p className='text-xl md:text-2xl text-text-light mb-8 max-w-4xl mx-auto textBottom'>
+            Ваш надійний автосервіс у Києві. Обслуговування авто будь-якої марки з гарантією 12
+            місяців.
+          </p>
         </div>
       </div>
     </section>
